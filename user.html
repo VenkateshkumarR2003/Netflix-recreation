@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who’s Watching - Netflix</title>
+  <link rel="stylesheet" href="user.css">
+</head>
+<body>
+
+  <div class="users-container">
+    <h1>Who’s Watching?</h1>
+    <div class="profiles">
+      <div class="profile" onclick="goToHome()">
+        <img src="images/Users/user (1).jfif" alt="User 1">
+        <p>venkey</p>
+      </div>
+      <div class="profile" onclick="goToHome()">
+        <img src="images/Users/user (2).jfif" alt="User 2">
+        <p>Sambavi</p>
+      </div>
+      <div class="profile" onclick="goToHome()">
+        <img src="images/Users/user (3).jfif" alt="User 3">
+        <p>joe</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goToHome() {
+      window.location.href = "home.html"; 
+    }
+  </script>
+
+</body>
+</html>

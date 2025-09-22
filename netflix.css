@@ -1,0 +1,292 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar,
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+body, .movie-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #111;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.hamburger {
+  position: relative;          
+  width: 44px;                 
+  height: 44px;                
+  display: inline-block;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 28px;               
+  height: 3px;                
+  background: #fff;
+  border-radius: 2px;
+  transform: translate(-50%, var(--y)); 
+  transition: transform .30s cubic-bezier(.2,.8,.2,1), opacity .2s;
+  transform-origin: center;
+}
+
+.hamburger span:nth-child(1) { --y: -9px; }
+.hamburger span:nth-child(2) { --y: 0px; }
+.hamburger span:nth-child(3) { --y: 9px; }
+
+.hamburger.active span:nth-child(1) {
+  transform: translate(-50%, 0) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translate(-50%, 0) scale(0.85);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translate(-50%, 0) rotate(-45deg);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.nav-links li a:hover {
+  color: #e50914;
+}
+
+#searchBox {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 25%;
+  left: 50px;
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #aaa;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #000;
+}
+
+.row {
+  padding: 20px 30px;
+}
+
+.row h2 {
+  margin-bottom: 10px;
+}
+
+.movie-row {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.movie-row img {
+  width: 180px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.movie-row img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  background-color: #111;
+}
+
+
+@media (max-width: 1024px) {
+  .hero-text {
+    left: 30px;
+    max-width: 500px;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  .movie-row img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background-color: #111;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+  }
+
+  #searchBox {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  .hero-text {
+    left: 20px;
+    bottom: 20%;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .movie-row img {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+  .logo {
+    font-size: 20px;
+  }
+  .nav-links {
+    gap: 15px;
+  }
+  .hero-text {
+    left: 15px;
+    bottom: 15%;
+    max-width: 90%;
+  }
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+  .hero-text p {
+    font-size: 0.8rem;
+  }
+  .btn {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  .movie-row img {
+    width: 100px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
